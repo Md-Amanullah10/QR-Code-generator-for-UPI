@@ -1,0 +1,25 @@
+import qrcode
+
+#Taking UPI id as an input
+upi_id=input("Enter your UPI ID = ")
+
+#Defining the payment URL based on the UPI ID and the payment app
+#You can modify these URLs based on the payment apps you want to support.
+phonepe_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+amazon_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+paytm_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+
+#Create QR Codes for each payment app
+phonepe_qr=qrcode.make(phonepe_url)
+amazon_qr=qrcode.make(amazon_url)
+paytm_qr=qrcode.make(paytm_url)
+
+#Saving the QR code to image file (optional)
+phonepe_qr.save('phonepe_qr.png')
+paytm_qr.save('paytm_qr.png')
+amazon_qr.save('amazon_qr.png')
+
+#Displaying the qr code using show method(Install the PIL/Pillow Library)
+phonepe_qr.show()
+paytm_qr.show()
+amazon_qr.show()
